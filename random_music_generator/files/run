@@ -1,0 +1,6 @@
+#! /bin/bash
+set -e
+
+cd repo
+exec gunicorn -b 0.0.0.0:80 server:app --workers 4 --log-level debug --access-logfile - --error-logfile - --log-file -
+
