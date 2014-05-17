@@ -13,4 +13,10 @@ RUN cd /servers/node_game_tutorial/ && grunt
 # Add the nginx configuration file
 ADD files/node_game_tutorial_client /etc/nginx/sites-enabled/
 
-EXPOSE  80
+ADD files/node_game_tutorial_client.conf /etc/supervisor/conf.d/
+ADD files/node_game_tutorial_server.conf /etc/supervisor/conf.d/
+
+RUN sed -i 's/\[supervisord\]/[supervisord]\nnodaemon=true/' /etc/supervisor/supervisord.conf
+
+
+EXPOSE  80 81

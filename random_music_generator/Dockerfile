@@ -17,4 +17,6 @@ ADD files/abjad.cfg /root/.abjad/
 ADD files/run /servers/random-music-generator/
 ADD files/random-music-generator.conf /etc/supervisor/conf.d/
 
+RUN sed -i 's/\[supervisord\]/[supervisord]\nnodaemon=true/' /etc/supervisor/supervisord.conf
+
 EXPOSE  80
